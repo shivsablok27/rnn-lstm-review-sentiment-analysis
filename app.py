@@ -5,7 +5,10 @@ from keras.datasets import imdb
 import numpy as np
 
 # Load model
-model = load_model("rnn-lstm-sentiment_model.h5", compile=False)
+from keras.layers import SpatialDropout1D
+
+model = load_model("rnn-lstm-sentiment_model.h5", compile=False,
+                   custom_objects={"SpatialDropout1D": SpatialDropout1D})
 
 # Load IMDB word index
 word_index = imdb.get_word_index()
